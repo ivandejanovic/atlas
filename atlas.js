@@ -1,5 +1,5 @@
 /*
- * Atlas 0.1.0
+ * Atlas 0.1.1
  *
  * The MIT License (MIT)
  *
@@ -53,7 +53,7 @@
   // Basic setup.
   var previousVersion = root.Atlas;
   
-  Atlas.VERSION = '0.1.0';
+  Atlas.VERSION = '0.1.1';
   
   Atlas.noConflict = function() {
     root.Atlas = previousVersion;
@@ -105,9 +105,7 @@
   
   // Create basic Atlas item view. Used for displaying a single model.
   Atlas.ItemView = Atlas.View.extend({
-    defaults : {
-      model : new Backbone.Model()
-    },
+    model : new Backbone.Model(),
     serializeData : function(options) {
       return this.model.toJSON();
     }
@@ -122,9 +120,7 @@
   
   // Create basic collection view. Used for displaying collection that does not require nested views.
   Atlas.CollectionView = Atlas.View.extend({
-    defaults : {
-      collection : new Backbone.Collection()
-    },
+    collection : new Backbone.Collection(),
     serializeData : function(options) {
       return this.collection.toJSON();
     }
