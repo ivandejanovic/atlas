@@ -5,21 +5,19 @@ Atlas is a thin layer over Backbone providing some common boilerplate functional
 
 There are plenty of libraries build on top of Backbone that provide a lot of best practices out of the box (Marionette, Thorax, Chaplin etc.). But when applications are being developed for a low end handheld devices with poor connectivity the size of the Backbone addidions can prove to much.
 
-Idea behind Atlas is to provide the drop in replacement for Backbone with addition of most commonly used constructs, while keeping the size of the library to a minimum. Atlas can be for the most part be used in the exactly same way as Backbone. Atlas is by no means a replacement for libraries like Marionette, Thorax, Chaplin etc. If you are building a Backbone based web application that targets more capable clients and the size of the code is not critical previously mentioned libraries are probably a better option.
+Idea behind Atlas is to provide the drop in replacement for Backbone with addition of most commonly used constructs, while keeping the size of the library to a minimum. Atlas can for the most part be used in the exactly same way as Backbone. Atlas is by no means a replacement for libraries like Marionette, Thorax, Chaplin etc. If you are building a Backbone based web application that targets more capable clients and the size of the code is not critical previously mentioned libraries are probably a better option.
 
 References
 
-Atlas keeps a reference to DOM manipulation library with which it was initialized in Atlas.$. Atlas also keeps a reference to Underscore, Handlebars and Backbone in Atlas._, Atlas.handlebars and Atlas.Backbone respectively.
+Atlas keeps a reference to DOM manipulation library with which it was initialized in Atlas.$. Atlas also keeps a reference to Underscore, Handlebars and Backbone in Atlas._, Atlas.Handlebars and Atlas.Backbone respectively.
 
 Templating
 
-Atlas currently expects Handlebars as a templating engine. Atlas provide tempalting function Atlas.template that expects searches tempaltes by id. Tempaltes id should end with "-template". Id prefix shpould be passed to Atlas.template function. See example below.
+Atlas currently expects Handlebars as a templating engine. Atlas provide tempalting function Atlas.template that searches templates by id. Templates id should end with "-template". Id prefix should be passed to Atlas.template function. See example below.
 
 Place your template in the script tag
 
-<script id="some-view-template" type="text/x-handlebars-template">
-  
-</script>
+script id="some-view-template" type="text/x-handlebars-template"
 
 Then reference it from a view
 
@@ -49,7 +47,7 @@ Atlas.history is direct reference to Backbone.history and can be used interchang
 
 View
 
-Atlas.View is the basic view provided by Atlas. It is the extension to Backbone.View with some functionality added. It can be used for rendering view that are not backed by a model or a collection.
+Atlas.View is the basic view provided by Atlas. It is the extension to Backbone.View with some functionality added. It can be used for rendering view that are not backed by a model or a collection. All other Atlas views are extended from Atlas.View.
 
 View methods
 
