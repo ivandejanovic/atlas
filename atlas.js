@@ -1,9 +1,9 @@
 /*
- * Atlas 0.1.1
+ * Atlas 0.2.0
  *
  * The MIT License (MIT)
  *
- * Copyright 2014-2014 Ivan Dejanovic and Quine Interactive
+ * Copyright 2008-2014 Ivan Dejanovic and Quine Interactive
  * www.quineinteractive.com
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -53,7 +53,18 @@
   // Basic setup.
   var previousVersion = root.Atlas;
   
-  Atlas.VERSION = '0.1.1';
+  Atlas.VERSION = '0.2.0';
+  
+  // Set references.
+  Atlas.$ = $;
+  Atlas.Handlebars = Handlebars;
+  Atlas._ = _;
+  Atlas.Backbone = Backbone;
+  Atlas.Events = Backbone.Events;
+  Atlas.Model = Backbone.Model;
+  Atlas.Collection = Backbone.Collection;
+  Atlas.Router = Backbone.Router;
+  Atlas.history = Backbone.history;
   
   Atlas.noConflict = function() {
     root.Atlas = previousVersion;
@@ -88,6 +99,11 @@
       
       return this;
     },
+    // Default debounce interval. Reimplement if different interval is needed.
+    debounceInterval : 100,
+    debounceRender : _.debounce(function(){
+      return this.render();
+    }, this.debounceInterval),
     // This function should be reimplemented if some action need to be taken before closing a view.
     beforeClose : function(options) {
       
@@ -100,6 +116,8 @@
       this.beforeClose(options);
       this.remove(options);
       this.onClose(options);
+      
+      return this;
     }
   });
   
@@ -153,6 +171,8 @@
       this.clearChildren(options);
       this.remove(options);
       this.onClose(options);
+      
+      return this;
     }
   });
   
@@ -166,6 +186,8 @@
       this.view = view;
       this.view.render(options);
       this.$el.append(this.view.$el);
+      
+      return this;
     }
   });
   
