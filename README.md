@@ -57,6 +57,8 @@ Atlas.View.debounceRender is by default a render method debounced for 100 milise
 
 Atlas.View.close is a method for properly desposing of a view. It takes optional options parameter that is passed to all methods called by close. It first calls Atlas.View.beforeClose with empty implementation by default. Atlas.View.beforeClose should be reimplemented if some logic needs to be run prior to disposing of the view. It then calls Backbone.View.remove that removes event listeners and removes view element from the DOM. It then calls Atlas.View.onClose with empty implementation by default. Atlas.View.onClose should be reimplemented if some logic needs to be run after closing the view. All these methods as their last parameter receive an options parameter that was originally passed to close method.
 
+Atlas.View.handleBackClick is a method that perform History.back.
+
 ItemView
 
 TODO

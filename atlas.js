@@ -1,5 +1,5 @@
 /*
- * Atlas 0.2.0
+ * Atlas 0.2.1
  *
  * The MIT License (MIT)
  *
@@ -53,7 +53,7 @@
   // Basic setup.
   var previousVersion = root.Atlas;
   
-  Atlas.VERSION = '0.2.0';
+  Atlas.VERSION = '0.2.1';
   
   // Set references.
   Atlas.$ = $;
@@ -86,12 +86,15 @@
     onRender : function(options) {
       
     },
+    // Render serialized data.
     renderData : function(data, options) {
       this.$el.html(this.template(data));
     },
+    // Serialize data to be rendered.
     serializeData: function(options) {
       return {};
     },
+    // Render method.
     render : function(options) {
       this.beforeRender(options);
       this.renderData(this.serializeData(options), options);
@@ -101,6 +104,7 @@
     },
     // Default debounce interval. Reimplement if different interval is needed.
     debounceInterval : 100,
+    // Debounced render method.
     debounceRender : _.debounce(function(){
       return this.render();
     }, this.debounceInterval),
@@ -108,16 +112,21 @@
     beforeClose : function(options) {
       
     },
-    // This function should be reimplemented if some action need to be taken after closing a view.
+    // This method should be reimplemented if some action need to be taken after closing a view.
     onClose : function(options){
       
     },
+    // Close method that properly clears resources.
     close : function(options) {
       this.beforeClose(options);
       this.remove(options);
       this.onClose(options);
       
       return this;
+    },
+    // History back handler.
+    handleBackClick : function() {
+      root.history.back();
     }
   });
   
@@ -126,13 +135,6 @@
     model : new Backbone.Model(),
     serializeData : function(options) {
       return this.model.toJSON();
-    }
-  });
-
-  //Create view that can handle browser back click
-  Atlas.BackView = Atlas.ItemView.extend({
-    handleBackClick : function() {
-      root.history.back();
     }
   });
   
