@@ -1,5 +1,5 @@
 /*
- * Atlas 0.2.1
+ * Atlas 0.2.2
  *
  * The MIT License (MIT)
  *
@@ -53,7 +53,7 @@
   // Basic setup.
   var previousVersion = root.Atlas;
   
-  Atlas.VERSION = '0.2.1';
+  Atlas.VERSION = '0.2.2';
   
   // Set references.
   Atlas.$ = $;
@@ -165,6 +165,7 @@
       this.collection.each(function (model, index, collection) {
         var view = new parent.itemView({model : model});
         view.render(options);
+        children.push(view);
         parent.$el.append(view.$el);
       });
     },
