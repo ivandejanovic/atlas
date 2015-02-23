@@ -1,5 +1,5 @@
 /*
- * Atlas 0.2.3
+ * Atlas 0.2.4
  *
  * The MIT License (MIT)
  *
@@ -53,7 +53,7 @@
   // Basic setup.
   var previousVersion = root.Atlas;
   
-  Atlas.VERSION = '0.2.3';
+  Atlas.VERSION = '0.2.4';
   
   // Set references.
   Atlas.$ = $;
@@ -106,7 +106,7 @@
     debounceInterval : 100,
     // Debounced render method.
     debounceRender : _.debounce(function(){
-      return this.render();
+      return this.render(options);
     }, this.debounceInterval),
     // This function should be reimplemented if some action need to be taken before closing a view.
     beforeClose : function(options) {
