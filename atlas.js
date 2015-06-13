@@ -149,7 +149,7 @@
   // Create basic collection item view. Used for displaying a parent collection with nested model views inside.
   Atlas.CollectionItemView = Atlas.View.extend({
     collection : new Backbone.Collection(),
-    itemView : Atlas.ItemCollectionView,
+    itemView : Atlas.ItemView,
     children : [],
     clearChildren : function(options) {
       _.each(this.children, function(child, index, children){
