@@ -61,19 +61,15 @@ Atlas.View.handleBackClick is a method that perform History.back.
 
 ItemView
 
-TODO
-
-BackView
-
-TODO
+Atlas.ItemView is extension to Atlas.View. This views main use is to render a single model. The miminum user is required to do is set up a template and a model object. When user calls Atlas.ItemView.render method the view will serialize the model it has and pass the serialization result to the template function.
 
 CollectionView
 
-TODO
+Atlas.Collection view is extension to Atlas.View. This views main use is to render a collection of models when handling each model is simple and subviews are not required. The minimum user is required to do is set up a template and a collection object. When user calls Atlas.CollectionView.render method the view will serialize the collection it has and pass the serialization result to the template function.
 
 ColectionItemView
 
-TODO
+Atlas.CollectionItemView is extension to Atlas.View. This views main use is to render a collection of models when handling each model requires a subview. The minimun user is required to do is set up a template, collection object and provide a ItemView that will be used to handle the subview. When user calls Atlas.CollectionItemView.render method the view render its template, and then creates a subview for each model in a collection and calls its render method to render the children. Atlas.CollectionItemView manages the lifecycle of its children and prevent memory leaks.
 
 Region
 
