@@ -1,5 +1,5 @@
 /*
- * Atlas 0.2.5
+ * Atlas 0.3.0
  *
  * The MIT License (MIT)
  *
@@ -33,31 +33,29 @@
     define(['underscore', 'jquery', 'exports'], function(_, $, exports) {
       // Export global even in AMD case in case this script is loaded with
       // others that may still expect a global Atlas.
-      root.Atlas = factory(root, exports, (root.jQuery || root.Zepto || root.ender || root.$), root.Handlebars, root._, root.Backbone);
+      root.Atlas = factory(root, exports, (root.jQuery || root.Zepto || root.ender || root.$), root._, root.Backbone);
     });
 
   // Next for Node.js or CommonJS.
   } else if (typeof exports !== 'undefined') {
     var $ = require('jQuery')
-      , Handlebars = require('Handlebars')
       , _ = require('underscore')
       , Backbone = require('Backbone');
     factory(root, exports, $, Handlebars, _, Backbone);
 
   // Finally, as a browser global.
   } else {
-    root.Atlas = factory(root, {}, (root.jQuery || root.Zepto || root.ender || root.$), root.Handlebars, root._, root.Backbone);
+    root.Atlas = factory(root, {}, (root.jQuery || root.Zepto || root.ender || root.$), root._, root.Backbone);
   }
 
-}(this, function(root, Atlas, $, Handlebars,  _, Backbone) {
+}(this, function(root, Atlas, $, _, Backbone) {
   // Basic setup.
   var previousVersion = root.Atlas;
   
-  Atlas.VERSION = '0.2.5';
+  Atlas.VERSION = '0.3.0';
   
   // Set references.
   Atlas.$ = $;
-  Atlas.Handlebars = Handlebars;
   Atlas._ = _;
   Atlas.Backbone = Backbone;
   Atlas.Events = Backbone.Events;
@@ -72,8 +70,8 @@
   };
   
   // Template helper function.
-  Atlas.template = function(name) {
-    return Handlebars.compile($('#' + name + '-template').html());
+  Atlas.templateFactory = function(name) {
+    return _.template($('#' + name + '-template').html());
   };
   
   // Create basic Atlas view.
@@ -92,7 +90,7 @@
     },
     // Serialize data to be rendered.
     serializeData: function(options) {
-      return {};
+      return {data: {}};
     },
     // Render method.
     render : function(options) {
@@ -134,7 +132,7 @@
   Atlas.ItemView = Atlas.View.extend({
     model : new Backbone.Model(),
     serializeData : function(options) {
-      return this.model.toJSON();
+      return {data: this.model.toJSON()};
     }
   });
   
@@ -142,7 +140,7 @@
   Atlas.CollectionView = Atlas.View.extend({
     collection : new Backbone.Collection(),
     serializeData : function(options) {
-      return this.collection.toJSON();
+      return {data: this.collection.toJSON()};
     }
   });
   
