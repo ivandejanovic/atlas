@@ -13,16 +13,16 @@ Atlas keeps a reference to DOM manipulation library with which it was initialize
 
 Templating
 
-Atlas currently expects Handlebars as a templating engine. Atlas provide tempalting function Atlas.template that searches templates by id. Templates id should end with "-template". Id prefix should be passed to Atlas.template function. See example below.
+Until version 0.3.0 Atlas used Handlebars as a templating engine. This is now changed to Underscore template in order do reduce dependency size. Atlas provide template factory function Atlas.templateFactory that searches templates by id. Templates id should end with "-template". Id prefix should be passed to Atlas.templateFactory function. See example below.
 
 Place your template in the script tag
 
-script id="some-view-template" type="text/x-handlebars-template"
+script id="some-view-template" type="text/template"
 
 Then reference it from a view
 
 var view = Atlas.View.extend({
-  template : Atlas.template('some-view');
+  template : Atlas.template('some-view')
 });
 
 Events
