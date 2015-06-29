@@ -154,12 +154,15 @@
         child.close(options);
       });
     },
+    createChildView : function (model, options) {
+      return new this.itemView({model : model});
+    },
     renderData : function(data, options) {
       this.clearChildren(options);
       var parent = this;
       this.$el.html(this.template(data));
       this.collection.each(function (model, index, collection) {
-        var view = new parent.itemView({model : model});
+        var view = parent.createChildView(model, options);
         view.render(options);
         parent.children.push(view);
         parent.$el.append(view.$el);
