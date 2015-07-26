@@ -28,6 +28,8 @@
  */
 
 (function(root, factory) {
+  'use strict';
+
   // Set up Atlas appropriately for the environment. Start with AMD.
   if (typeof define === 'function' && define.amd) {
     define(['underscore', 'jquery', 'exports'], function(_, $, exports) {
@@ -38,10 +40,10 @@
 
   // Next for Node.js or CommonJS.
   } else if (typeof exports !== 'undefined') {
-    var $ = require('jQuery')
-      , _ = require('underscore')
-      , Backbone = require('Backbone');
-    factory(root, exports, $, Handlebars, _, Backbone);
+    var $ = require('jQuery'),
+        _ = require('underscore'),
+        Backbone = require('Backbone');
+    factory(root, exports, $, _, Backbone);
 
   // Finally, as a browser global.
   } else {
@@ -49,6 +51,8 @@
   }
 
 }(this, function(root, Atlas, $, _, Backbone) {
+  'use strict';
+
   // Basic setup.
   var previousVersion = root.Atlas;
   
