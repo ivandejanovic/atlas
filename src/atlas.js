@@ -35,8 +35,7 @@
     define([ 'underscore', 'jquery', 'exports' ], function(_, $, exports) {
       // Export global even in AMD case in case this script is loaded with
       // others that may still expect a global Atlas.
-      root.Atlas = factory(root, exports, (root.jQuery || root.Zepto
-          || root.ender || root.$), root._, root.Backbone);
+      root.Atlas = factory(root, exports, (root.jQuery || root.Zepto || root.ender || root.$), root._, root.Backbone);
     });
 
     // Next for Node.js or CommonJS.
